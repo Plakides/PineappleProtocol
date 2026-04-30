@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0b0d1a">
+<title>The Pineapple Protocol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ================================================================
+     PRELOADER — runs before anything else, ensures assets are ready
+     ================================================================ -->
+<div id="preloader" class="screen active">
+  <div class="preload-inner">
+    <div class="preload-logo">🍍</div>
+    <div class="preload-bar"><div class="preload-fill" id="preloadFill"></div></div>
+    <div class="preload-text" id="preloadText">Booting Shrewsbury network...</div>
+  </div>
+</div>
+
+<!-- ================================================================
+     TITLE SCREEN
+     ================================================================ -->
+<div id="title" class="screen">
+  <div class="title-bg" style="background-image:url('assets/scenes/map.png')"></div>
+  <div class="title-vignette"></div>
+  <div class="title-glint"></div>
+  <div class="title-content">
+    <div class="title-badge">A Shrewsbury International School Bangkok production</div>
+    <h1 class="title-main">
+      <span class="title-the">The</span>
+      <span class="title-pineapple">PINEAPPLE</span>
+      <span class="title-protocol">Protocol</span>
+    </h1>
+    <p class="title-tagline">A computing mystery in eight rooms</p>
+    <div class="title-buttons">
+      <button class="btn btn-primary" id="btnStart">▶ Start Game</button>
+      <button class="btn btn-ghost" id="btnHowTo">How to Play</button>
+    </div>
+    <div class="title-meta">
+      <span>Year 9 · 10–15 minutes · ⌨️ + 👆</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================
+     HOW-TO MODAL
+     ================================================================ -->
+<div id="howto" class="screen overlay">
+  <div class="modal">
+    <h2>How to Play</h2>
+    <ul class="howto-list">
+      <li><strong>1.</strong> Pick your character, your house, and a name.</li>
+      <li><strong>2.</strong> An AI called PINEAPPLE has gone rogue. Travel the school, solve eight puzzles, and shut it down.</li>
+      <li><strong>3.</strong> Each puzzle teaches a real Computer Science idea and unlocks a career card.</li>
+      <li><strong>4.</strong> Tap, click, drag, type. Different puzzles use different controls — instructions appear in each room.</li>
+      <li><strong>5.</strong> No saving. Finish in one sitting (~15 min).</li>
+    </ul>
+    <button class="btn btn-primary" id="btnHowToClose">Got it</button>
+  </div>
+</div>
+
+<!-- ================================================================
+     CHARACTER SELECT
+     ================================================================ -->
+<div id="charselect" class="screen">
+  <div class="screen-header">
+    <div class="step-indicator"><span class="step active">1</span><span class="step-line"></span><span class="step">2</span><span class="step-line"></span><span class="step">3</span></div>
+    <h2>Choose your character</h2>
+    <p class="screen-sub">Each path tells a different story. Pick whoever you'd like to be today.</p>
+  </div>
+  <div class="char-grid">
+    <button class="char-card" data-char="boy">
+      <div class="char-img-wrap"><img src="assets/portraits/player_boy.png" alt="Shrewsbury Boy"></div>
+      <h3>The Student</h3>
+      <p class="char-tag">Discover wild careers and computing facts you didn't know existed.</p>
+    </button>
+    <button class="char-card char-card-recommended" data-char="girl">
+      <div class="char-img-wrap"><img src="assets/portraits/player_girl.png" alt="Shrewsbury Girl"></div>
+      <h3>The Pioneer</h3>
+      <p class="char-tag">Walk the path of women who shaped computing — and discover where you fit in next.</p>
+    </button>
+    <button class="char-card" data-char="star">
+      <div class="char-img-wrap"><img src="assets/portraits/player_star.png" alt="The Star"></div>
+      <h3>The Star</h3>
+      <p class="char-tag">A mysterious player from anywhere. Tech needs voices like yours.</p>
+    </button>
+  </div>
+</div>
+
+<!-- ================================================================
+     HOUSE SELECT
+     ================================================================ -->
+<div id="houseselect" class="screen">
+  <div class="screen-header">
+    <div class="step-indicator"><span class="step done">1</span><span class="step-line done"></span><span class="step active">2</span><span class="step-line"></span><span class="step">3</span></div>
+    <h2>Choose your House</h2>
+    <p class="screen-sub">Your final score will be added to the House leaderboard.</p>
+  </div>
+  <div class="house-grid">
+    <button class="house-card" data-house="williams" style="--house: #108040;">
+      <div class="house-crest"><img src="assets/houses/williams.png" alt="Williams"></div>
+      <h3>Williams</h3>
+      <p class="house-tag">Dragon</p>
+    </button>
+    <button class="house-card" data-house="teresa" style="--house: #602090;">
+      <div class="house-crest"><img src="assets/houses/teresa.png" alt="Teresa"></div>
+      <h3>Teresa</h3>
+      <p class="house-tag">Phoenix</p>
+    </button>
+    <button class="house-card" data-house="mandela" style="--house: #F08020;">
+      <div class="house-crest"><img src="assets/houses/mandela.png" alt="Mandela"></div>
+      <h3>Mandela</h3>
+      <p class="house-tag">Fox</p>
+    </button>
+    <button class="house-card" data-house="schweitzer" style="--house: #D02020;">
+      <div class="house-crest"><img src="assets/houses/schweitzer.png" alt="Schweitzer"></div>
+      <h3>Schweitzer</h3>
+      <p class="house-tag">Bull</p>
+    </button>
+    <button class="house-card" data-house="malala" style="--house: #4060A0;">
+      <div class="house-crest"><img src="assets/houses/malala.png" alt="Malala"></div>
+      <h3>Malala</h3>
+      <p class="house-tag">Griffin</p>
+    </button>
+    <button class="house-card" data-house="king" style="--house: #00A0E0;">
+      <div class="house-crest"><img src="assets/houses/king.png" alt="King"></div>
+      <h3>King</h3>
+      <p class="house-tag">Lion</p>
+    </button>
+  </div>
+  <div class="screen-footer">
+    <button class="btn btn-ghost" id="btnHouseBack">◀ Back</button>
+  </div>
+</div>
+
+<!-- ================================================================
+     NAME ENTRY
+     ================================================================ -->
+<div id="nameselect" class="screen">
+  <div class="screen-header">
+    <div class="step-indicator"><span class="step done">1</span><span class="step-line done"></span><span class="step done">2</span><span class="step-line done"></span><span class="step active">3</span></div>
+    <h2>What's your name?</h2>
+    <p class="screen-sub">PINEAPPLE will use it. Auntie will use it. Make it count.</p>
+  </div>
+  <div class="name-card">
+    <div class="name-preview">
+      <div class="name-portrait"><img id="namePortrait" src="" alt=""></div>
+      <div class="name-house-badge" id="nameHouseBadge"></div>
+    </div>
+    <div class="name-input-wrap">
+      <label for="playerName">Your name</label>
+      <input type="text" id="playerName" maxlength="14" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="e.g. Alex">
+      <div class="name-hint">Letters and spaces only · Max 14 characters</div>
+    </div>
+    <div class="name-actions">
+      <button class="btn btn-ghost" id="btnNameBack">◀ Back</button>
+      <button class="btn btn-primary" id="btnNameStart" disabled>Begin ▶</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================
+     OPENING CUTSCENE
+     ================================================================ -->
+<div id="cutscene" class="screen">
+  <div class="cut-bg" id="cutBg"></div>
+  <div class="cut-overlay"></div>
+  <div class="cut-pineapple" id="cutPineapple"></div>
+  <div class="dialogue" id="dialogueBox">
+    <div class="dialogue-portrait"><img id="dialoguePortrait" src="" alt=""></div>
+    <div class="dialogue-body">
+      <div class="dialogue-name" id="dialogueName">PINEAPPLE</div>
+      <div class="dialogue-text" id="dialogueText"></div>
+      <div class="dialogue-prompt" id="dialoguePrompt">▼ tap to continue</div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================
+     MAP SCREEN
+     ================================================================ -->
+<div id="map" class="screen">
+  <div class="map-header">
+    <div class="map-player-info">
+      <div class="map-portrait"><img id="mapPortrait" src="" alt=""></div>
+      <div class="map-info-text">
+        <div class="map-player-name" id="mapPlayerName"></div>
+        <div class="map-player-house" id="mapPlayerHouse"></div>
+      </div>
+    </div>
+    <div class="map-progress">
+      <div class="map-progress-label">Containment fragments</div>
+      <div class="map-progress-bar"><div class="map-progress-fill" id="mapProgressFill"></div></div>
+      <div class="map-progress-count" id="mapProgressCount">0 / 3</div>
+    </div>
+    <div class="map-inventory" id="mapInventory">
+      <!-- Populated dynamically -->
+    </div>
+  </div>
+  <div class="map-stage">
+    <img class="map-image" src="assets/scenes/map.png" alt="School map">
+    <div class="map-hotspots" id="mapHotspots">
+      <!-- Hotspots created in JS -->
+    </div>
+    <div class="map-pineapple-warning" id="mapPineappleWarning">
+      <img src="assets/pineapple/healthy.png" alt="">
+      <div>PINEAPPLE detected in <strong>Server Room</strong></div>
+    </div>
+  </div>
+  <div class="map-footer">
+    <div class="map-tip" id="mapTip">Tap a glowing location to start a puzzle.</div>
+  </div>
+</div>
+
+<!-- ================================================================
+     ROOM / PUZZLE SCREEN
+     ================================================================ -->
+<div id="room" class="screen">
+  <div class="room-bg" id="roomBg"></div>
+  <div class="room-overlay"></div>
+
+  <!-- Top bar: visible during puzzle -->
+  <div class="room-topbar" id="roomTopbar">
+    <button class="room-back" id="btnRoomQuit" title="Return to map">◀ Map</button>
+    <div class="room-title-block">
+      <div class="room-title-eyebrow" id="roomEyebrow">Location</div>
+      <div class="room-title-main" id="roomTitle">Title</div>
+    </div>
+    <div class="room-score" id="roomScore">
+      <span class="room-score-label">SCORE</span>
+      <span class="room-score-value" id="roomScoreValue">100</span>
+    </div>
+  </div>
+
+  <!-- Puzzle host: each puzzle module renders into this -->
+  <div class="puzzle-host" id="puzzleHost"></div>
+
+  <!-- Scene-reveal prompt — shown on entry, scene visible, tap to continue -->
+  <div class="room-scene-prompt" id="roomScenePrompt">
+    <div class="room-scene-prompt-card">
+      <div class="room-scene-prompt-eyebrow" id="roomScenePromptEyebrow">Required Location</div>
+      <div class="room-scene-prompt-title" id="roomScenePromptTitle">Title</div>
+      <div class="room-scene-prompt-tap">Tap anywhere to enter ▶</div>
+    </div>
+  </div>
+
+  <!-- Pre-puzzle intro overlay (Auntie hint, briefing) -->
+  <div class="room-intro" id="roomIntro">
+    <div class="room-intro-card">
+      <div class="room-intro-portrait"><img id="roomIntroPortrait" src="" alt=""></div>
+      <div class="room-intro-body">
+        <div class="room-intro-name" id="roomIntroName"></div>
+        <div class="room-intro-text" id="roomIntroText"></div>
+        <button class="btn btn-primary" id="btnRoomIntroStart">Begin Puzzle ▶</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cameo overlay (Lovelace / Hopper / Lamarr trivia popups) -->
+  <div class="room-cameo" id="roomCameo">
+    <div class="room-cameo-card">
+      <div class="room-cameo-eyebrow">DID YOU KNOW?</div>
+      <div class="room-cameo-portrait"><img id="roomCameoPortrait" src="" alt=""></div>
+      <div class="room-cameo-name" id="roomCameoName"></div>
+      <div class="room-cameo-text" id="roomCameoText"></div>
+      <button class="btn btn-ghost" id="btnRoomCameoClose">Cool ▶</button>
+    </div>
+  </div>
+
+  <!-- Completion overlay -->
+  <div class="room-complete" id="roomComplete">
+    <div class="room-complete-card">
+      <div class="room-complete-banner">PUZZLE SOLVED</div>
+      <div class="room-complete-score">
+        <div class="room-complete-score-label">Your Score</div>
+        <div class="room-complete-score-value" id="roomCompleteScore">100</div>
+      </div>
+      <div class="room-complete-rewards" id="roomCompleteRewards"></div>
+      <div class="room-complete-career" id="roomCompleteCareer"></div>
+      <button class="btn btn-primary" id="btnRoomComplete">Back to Map ▶</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================
+     VICTORY SCREEN — final celebration after Server Room finale
+     ================================================================ -->
+<div id="victory" class="screen">
+  <div class="victory-bg"></div>
+  <div class="victory-overlay"></div>
+
+  <div class="victory-content">
+    <div class="victory-banner-wrap">
+      <div class="victory-eyebrow">PROTOCOL COMPLETE</div>
+      <h1 class="victory-banner">PINEAPPLE.EXE Terminated</h1>
+      <div class="victory-subtitle" id="victorySubtitle">— ready to fill —</div>
+    </div>
+
+    <div class="victory-auntie-pitch">
+      <div class="victory-auntie-portrait">
+        <img src="assets/portraits/auntie.png" alt="">
+      </div>
+      <div class="victory-auntie-bubble">
+        <div class="victory-auntie-name">DR. P. AUNTIE</div>
+        <div class="victory-auntie-text" id="victoryAuntieText">— ready to fill —</div>
+      </div>
+    </div>
+
+    <div class="victory-stats" id="victoryStats"></div>
+
+    <div class="victory-careers-section">
+      <div class="victory-careers-label">CAREERS UNLOCKED</div>
+      <div class="victory-careers-grid" id="victoryCareersGrid"></div>
+    </div>
+
+    <div class="victory-actions">
+      <button class="btn btn-primary" id="btnVictoryReplay">Play Again ▶</button>
+      <button class="btn btn-ghost" id="btnVictoryDone">Done</button>
+    </div>
+
+    <div class="victory-credits">
+      Made with ♥ for Year 9 CS, Shrewsbury International School Bangkok.
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================
+     SOUND EFFECTS (created lazily via Web Audio API)
+     ================================================================ -->
+
+<script src="js/game.js"></script>
+</body>
+</html>

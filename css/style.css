@@ -1097,6 +1097,7 @@ input { font-family: inherit; }
   background-position: center;
   filter: brightness(0.45) saturate(0.85);
   z-index: 0;
+  transition: filter 0.3s ease;
 }
 .room-overlay {
   position: absolute;
@@ -1106,10 +1107,14 @@ input { font-family: inherit; }
   z-index: 1;
   transition: opacity 0.3s ease;
 }
-/* During the scene-reveal moment (entry or exit), kill the dimming overlay
-   so the player sees the artwork in full. */
+/* During the scene-reveal moment (entry or exit), kill BOTH the dimming overlay
+   AND the brightness/saturation filter on the bg so the player sees the artwork
+   in full glory. */
 #room:has(.room-scene-prompt.active) .room-overlay {
   opacity: 0;
+}
+#room:has(.room-scene-prompt.active) .room-bg {
+  filter: none;
 }
 
 /* Topbar */

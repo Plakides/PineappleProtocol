@@ -54,9 +54,9 @@
    * Hotspot coordinates are tuned to the map.png image:
    *   pier       → far left, on the river (boats visible)
    *   library    → the building with the angled glass roof, river-side
-   *   canteen    → main central building
+   *   theatre    → main central building
    *   field      → big green sports field bottom-centre
-   *   theatre    → main building (right side, near crest)
+   *   canteen    → main building (right side, near crest)
    *   rooftop    → top of the rightmost building (solar panels)
    *   classroom  → middle of the rightmost building
    *   server     → the small structure top-right
@@ -64,9 +64,9 @@
   const ROOMS = {
     pier:       { id: 'pier',      title: 'Pier',          scene: 'pier',      x: 17, y: 53, required: true,  order: 1, teaches: 'Data Types' },
     library:    { id: 'library',   title: 'Library',       scene: 'library',   x: 46, y: 38, required: true,  order: 2, teaches: 'Binary & ASCII' },
-    canteen:    { id: 'canteen',   title: 'Canteen',       scene: 'canteen',   x: 32, y: 38, required: true,  order: 3, teaches: 'Mini-game' },
+    canteen:    { id: 'canteen',   title: 'Canteen',       scene: 'canteen',   x: 55, y: 50, required: true,  order: 3, teaches: 'Mini-game' },
     field:      { id: 'field',     title: 'Sports Field',  scene: 'field',     x: 60, y: 78, required: false, order: null, teaches: 'Pseudocode logic' },
-    theatre:    { id: 'theatre',   title: 'Theatre',       scene: 'theatre',   x: 55, y: 50, required: true,  order: 4, teaches: 'Patterns & arrays' },
+    theatre:    { id: 'theatre',   title: 'Theatre',       scene: 'theatre',   x: 32, y: 38, required: true,  order: 4, teaches: 'Patterns & arrays' },
     rooftop:    { id: 'rooftop',   title: 'Rooftop',       scene: 'rooftop',   x: 78, y: 35, required: false, order: null, teaches: 'Networks & signals' },
     classroom:  { id: 'classroom', title: 'CS Classroom',  scene: 'classroom', x: 82, y: 55, required: true,  order: 5, teaches: 'Debugging' },
     server:     { id: 'server',    title: 'Server Room',   scene: 'server',    x: 86, y: 70, required: true,  order: 6, teaches: 'Finale' }
